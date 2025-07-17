@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import * as Yup from "Yup";
+import * as yup from "yup";
 import { userContext } from "../../context/user.context";
 
 export default function ResetPassword() {
@@ -38,11 +38,11 @@ export default function ResetPassword() {
         }
     }
 
-    const validationSChema = Yup.object({
-        email: Yup.string()
+    const validationSChema = yup.object({
+        email: yup.string()
             .required("code is required")
             .email("email must be valid"),
-        newPassword: Yup.string()
+        newPassword: yup.string()
             .required("password is required")
             .matches(
                 /^[A-Z][a-zA-Z0-9]{5,25}$/,

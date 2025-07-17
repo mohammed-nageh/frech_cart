@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import * as Yup from "Yup";
+import * as yup from "yup";
 import { userContext } from "../../context/user.context";
 
 export default function ForgetPassword() {
@@ -38,8 +38,8 @@ export default function ForgetPassword() {
         }
     }
 
-    const validationSChema = Yup.object({
-        email: Yup.string()
+    const validationSChema = yup.object({
+        email: yup.string()
             .required("email is required")
             .email("email must be valid"),
     });

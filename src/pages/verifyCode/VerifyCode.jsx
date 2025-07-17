@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-import * as Yup from "Yup";
+import * as yup from "yup";
 import { userContext } from "../../context/user.context";
 
 export default function VerifyCode() {
@@ -41,8 +41,8 @@ export default function VerifyCode() {
         }
     }
 
-    const validationSChema = Yup.object({
-        resetCode: Yup.string()
+    const validationSChema = yup.object({
+        resetCode: yup.string()
             .required("code is required")
 
     });
