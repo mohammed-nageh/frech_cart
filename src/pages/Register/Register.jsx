@@ -3,7 +3,8 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import * as Yup from "Yup";
+import * as yup from "yup";
+
 
 export default function Register() {
   const phoneRegex =
@@ -39,26 +40,26 @@ export default function Register() {
     }
   }
 
-  const validationSChema = Yup.object({
-    name: Yup.string()
+  const validationSChema = yup.object({
+    name: yup.string()
       .required("name is required")
       .min(3, "name at least 3 chars")
       .max(15, "name at most 15 chars"),
-    email: Yup.string()
+    email: yup.string()
       .required("email is required")
       .email("email must be valid"),
-    phone: Yup.string()
+    phone: yup.string()
       .required("phone is required")
       .matches(phoneRegex, "phone must be valid"),
-    password: Yup.string()
+    password: yup.string()
       .required("password is required")
       .matches(
         /^[A-Z][a-zA-Z0-9]{5,25}$/,
         "password must start with capital letter followed by atleast 5 chars"
       ),
-    rePassword: Yup.string()
+    rePassword: yup.string()
       .required("repassword is required")
-      .oneOf([Yup.ref("password")], "password dont match"),
+      .oneOf([yup.ref("password")], "password dont match"),
   });
 
   const formik = useFormik({
